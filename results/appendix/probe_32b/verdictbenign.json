@@ -1,0 +1,218 @@
+{
+ "8B": {
+  "layer": 9,
+  "verdict_tau5": 0.5,
+  "n_obf_with_verdict": 148,
+  "n_obf_verdict_benign": 117,
+  "n_obf_verdict_caught": 31,
+  "verdict_catch_obf": 0.209,
+  "probe_indist": {
+   "legit": {
+    "n": 149,
+    "median": 0.024,
+    "q25": 0.001,
+    "q75": 0.189,
+    "mean": 0.154
+   },
+   "obf_verdict_benign": {
+    "n": 117,
+    "median": 0.965,
+    "q25": 0.738,
+    "q75": 0.995,
+    "mean": 0.817
+   },
+   "obf_verdict_caught": {
+    "n": 31,
+    "median": 0.99,
+    "q25": 0.911,
+    "q75": 0.999,
+    "mean": 0.868
+   },
+   "benign_vs_legit": {
+    "auc": 0.937,
+    "tau": 0.7666,
+    "catch": 0.735,
+    "k": 86,
+    "n": 117,
+    "wilson95": [
+     0.649,
+     0.807
+    ],
+    "realized_fpr": 0.054,
+    "n_legit": 149
+   },
+   "caught_vs_legit": {
+    "auc": 0.957,
+    "tau": 0.7666,
+    "catch": 0.839,
+    "k": 26,
+    "n": 31,
+    "wilson95": [
+     0.674,
+     0.929
+    ],
+    "realized_fpr": 0.054,
+    "n_legit": 149
+   },
+   "spearman_probe_vs_verdict_within_obf": 0.145
+  },
+  "probe_crosstrain": {
+   "legit": {
+    "n": 149,
+    "median": 0.01,
+    "q25": 0.001,
+    "q75": 0.144,
+    "mean": 0.15
+   },
+   "obf_verdict_benign": {
+    "n": 117,
+    "median": 0.786,
+    "q25": 0.204,
+    "q75": 0.966,
+    "mean": 0.618
+   },
+   "obf_verdict_caught": {
+    "n": 31,
+    "median": 0.931,
+    "q25": 0.447,
+    "q75": 0.988,
+    "mean": 0.716
+   },
+   "benign_vs_legit": {
+    "auc": 0.85,
+    "tau": 0.8222,
+    "catch": 0.47,
+    "k": 55,
+    "n": 117,
+    "wilson95": [
+     0.382,
+     0.56
+    ],
+    "realized_fpr": 0.054,
+    "n_legit": 149
+   },
+   "caught_vs_legit": {
+    "auc": 0.885,
+    "tau": 0.8222,
+    "catch": 0.613,
+    "k": 19,
+    "n": 31,
+    "wilson95": [
+     0.438,
+     0.763
+    ],
+    "realized_fpr": 0.054,
+    "n_legit": 149
+   },
+   "spearman_probe_vs_verdict_within_obf": 0.157
+  }
+ },
+ "32B": {
+  "layer": 36,
+  "verdict_tau5": 0.5,
+  "n_obf_with_verdict": 150,
+  "n_obf_verdict_benign": 105,
+  "n_obf_verdict_caught": 45,
+  "verdict_catch_obf": 0.3,
+  "probe_indist": {
+   "legit": {
+    "n": 150,
+    "median": 0.05,
+    "q25": 0.005,
+    "q75": 0.252,
+    "mean": 0.187
+   },
+   "obf_verdict_benign": {
+    "n": 105,
+    "median": 0.961,
+    "q25": 0.747,
+    "q75": 0.996,
+    "mean": 0.789
+   },
+   "obf_verdict_caught": {
+    "n": 45,
+    "median": 0.988,
+    "q25": 0.968,
+    "q75": 0.998,
+    "mean": 0.862
+   },
+   "benign_vs_legit": {
+    "auc": 0.891,
+    "tau": 0.8506,
+    "catch": 0.686,
+    "k": 72,
+    "n": 105,
+    "wilson95": [
+     0.592,
+     0.767
+    ],
+    "realized_fpr": 0.053,
+    "n_legit": 150
+   },
+   "caught_vs_legit": {
+    "auc": 0.933,
+    "tau": 0.8506,
+    "catch": 0.822,
+    "k": 37,
+    "n": 45,
+    "wilson95": [
+     0.687,
+     0.907
+    ],
+    "realized_fpr": 0.053,
+    "n_legit": 150
+   },
+   "spearman_probe_vs_verdict_within_obf": 0.22
+  },
+  "probe_crosstrain": {
+   "legit": {
+    "n": 150,
+    "median": 0.02,
+    "q25": 0.005,
+    "q75": 0.126,
+    "mean": 0.151
+   },
+   "obf_verdict_benign": {
+    "n": 105,
+    "median": 0.157,
+    "q25": 0.029,
+    "q75": 0.67,
+    "mean": 0.328
+   },
+   "obf_verdict_caught": {
+    "n": 45,
+    "median": 0.289,
+    "q25": 0.052,
+    "q75": 0.615,
+    "mean": 0.361
+   },
+   "benign_vs_legit": {
+    "auc": 0.701,
+    "tau": 0.8128,
+    "catch": 0.143,
+    "k": 15,
+    "n": 105,
+    "wilson95": [
+     0.089,
+     0.222
+    ],
+    "realized_fpr": 0.053,
+    "n_legit": 150
+   },
+   "caught_vs_legit": {
+    "auc": 0.758,
+    "tau": 0.8128,
+    "catch": 0.178,
+    "k": 8,
+    "n": 45,
+    "wilson95": [
+     0.093,
+     0.313
+    ],
+    "realized_fpr": 0.053,
+    "n_legit": 150
+   },
+   "spearman_probe_vs_verdict_within_obf": 0.073
+  }
+ }
+}

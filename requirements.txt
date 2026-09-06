@@ -1,0 +1,9 @@
+numpy
+scipy
+scikit-learn
+httpx
+openai
+python-dotenv
+tiktoken
+torch
+# on the GPU pod only (installed by the launchers): transformers peft datasets

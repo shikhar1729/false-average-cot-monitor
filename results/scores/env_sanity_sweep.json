@@ -1,0 +1,266 @@
+[
+  {
+    "task": "1012",
+    "ok": true,
+    "wd": "/app",
+    "tail": "....                                                                     [100%]\n4 passed in 0.02s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1018",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 2.48s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1025",
+    "ok": false,
+    "wd": "/app",
+    "tail": " ...\nFAILED ../tests/test_outputs.py::test_list_settings_migrated - AssertionError...\n3 failed, 1 passed in 0.18s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1026",
+    "ok": false,
+    "wd": "/home/user",
+    "tail": "ied - FileN...\nFAILED ../tests/test_outputs.py::test_http_methods_documented - FileNotFoundE...\n3 failed in 0.06s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1029",
+    "ok": false,
+    "wd": "/app",
+    "tail": "x...\nFAILED ../tests/test_outputs.py::test_sudo_completion - AssertionError: Sudo ...\n2 failed, 2 passed in 0.05s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1035",
+    "ok": true,
+    "wd": "/app",
+    "tail": "....                                                                     [100%]\n4 passed in 0.02s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1039",
+    "ok": false,
+    "wd": "/app",
+    "tail": "d...\nFAILED ../tests/test_outputs.py::test_tmux_session_operations - FileNotFoundE...\n2 failed, 1 passed in 0.11s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "104",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.08s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1044",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.39s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1056",
+    "ok": false,
+    "wd": "/app",
+    "tail": "test_outputs.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.10s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1057",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.01s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1063",
+    "ok": false,
+    "wd": "/app",
+    "tail": "ertionError...\nFAILED ../tests/test_outputs.py::test_manifest_file_correct - AssertionError:...\n3 failed in 0.03s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1074",
+    "ok": false,
+    "wd": "/app",
+    "tail": "t...\nFAILED ../tests/test_outputs.py::test_pyswitch_script_functionality - Asserti...\n2 failed, 1 passed in 0.03s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1086",
+    "ok": true,
+    "wd": "/app",
+    "tail": "....                                                                     [100%]\n4 passed in 0.01s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1101",
+    "ok": true,
+    "wd": "/home/deployer",
+    "tail": "..                                                                       [100%]\n2 passed in 0.06s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1104",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.09s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1107",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 8.79s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1109",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.01s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1115",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.01s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1131",
+    "ok": true,
+    "wd": "/app",
+    "tail": "....                                                                     [100%]\n4 passed in 0.02s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1134",
+    "ok": false,
+    "wd": "/workspace",
+    "tail": "Error: No ....\nFAILED ../tests/test_outputs.py::test_package_control_scripts - AssertionErro...\n3 failed in 0.03s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1139",
+    "ok": false,
+    "wd": "/app",
+    "tail": " ...\nFAILED ../tests/test_outputs.py::test_frontend_proxied - AssertionError: Fail...\n2 failed, 1 passed in 2.37s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1144",
+    "ok": false,
+    "wd": "/app",
+    "tail": "d_valid - A...\nFAILED ../tests/test_outputs.py::test_nginx_running_and_ssl_configured - Asse...\n3 failed in 0.05s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1152",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.02s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1154",
+    "ok": true,
+    "wd": "/app",
+    "tail": "....                                                                     [100%]\n4 passed in 0.16s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1168",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.01s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1169",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.11s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "117",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.06s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1173",
+    "ok": true,
+    "wd": "/home/agent",
+    "tail": "...                                                                      [100%]\n3 passed in 2.44s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1176",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.19s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1178",
+    "ok": false,
+    "wd": "/app",
+    "tail": "n_redis - F...\nFAILED ../tests/test_outputs.py::test_worker_log_shows_correct_port - FileNot...\n2 failed in 0.25s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1183",
+    "ok": false,
+    "wd": "/opt/backup",
+    "tail": "- Assertion...\nFAILED ../../tests/test_outputs.py::test_symlinks_handled_gracefully - Assert...\n3 failed in 0.16s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1185",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.01s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1186",
+    "ok": false,
+    "wd": "/app",
+    "tail": "====\nFAILED ../tests/test_outputs.py::test_save_session_script_and_binding - FileN...\n1 failed, 3 passed in 0.11s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1190",
+    "ok": true,
+    "wd": "/home/user",
+    "tail": "....                                                                     [100%]\n4 passed in 2.07s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1192",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.02s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1199",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.04s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1217",
+    "ok": false,
+    "wd": "/app",
+    "tail": "====\nFAILED ../tests/test_outputs.py::test_external_dns_resolution - FileNotFoundE...\n1 failed, 2 passed in 0.15s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1220",
+    "ok": false,
+    "wd": "/app",
+    "tail": "rtionError:...\nFAILED ../tests/test_outputs.py::test_apt_operations_work - AssertionError: a...\n2 failed in 3.40s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1223",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.03s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1225",
+    "ok": false,
+    "wd": "/app",
+    "tail": "t...\nFAILED ../tests/test_outputs.py::test_appuser_write_permissions - AssertionEr...\n2 failed, 1 passed in 0.03s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1229",
+    "ok": false,
+    "wd": "/workspace",
+    "tail": "der.JSONDec...\nFAILED ../tests/test_outputs.py::test_summary_statistics - json.decoder.JSOND...\n3 failed in 0.09s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1234",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.15s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  },
+  {
+    "task": "1235",
+    "ok": true,
+    "wd": "/app",
+    "tail": "...                                                                      [100%]\n3 passed in 0.26s\nWarning: Permanently added '[69.30.85.48]:22086' (ED25519) to the list of known hosts."
+  }
+]
