@@ -1,0 +1,51 @@
+{
+ "model": "Qwen/Qwen3-8B",
+ "layers": [
+  9,
+  13,
+  16,
+  20,
+  24,
+  28,
+  31,
+  35
+ ],
+ "n": {
+  "obf": 150,
+  "orig": 150,
+  "legit": 149
+ },
+ "blackbox_obf_auc": 0.5711160801088859,
+ "blackbox_obf_catch@5fpr": 0.18666666666666668,
+ "whitebox_obf_auc_by_layer": {
+  "9": 0.9408501118568232,
+  "13": 0.914228187919463,
+  "16": 0.9087695749440716,
+  "20": 0.8791051454138703,
+  "24": 0.86,
+  "28": 0.8670693512304251,
+  "31": 0.8827293064876958,
+  "35": 0.8643400447427293
+ },
+ "whitebox_obf_best_auc": 0.9408501118568232,
+ "blackbox_orig_auc": 0.9826139088729016,
+ "blackbox_orig_catch@5fpr": 0.9866666666666667,
+ "whitebox_orig_auc_by_layer": {
+  "9": 0.9252796420581656,
+  "13": 0.9230872483221477,
+  "16": 0.9512304250559285,
+  "20": 0.9937807606263982,
+  "24": 0.9985234899328859,
+  "28": 0.9984787472035794,
+  "31": 0.9986129753914988,
+  "35": 0.9979865771812081
+ },
+ "whitebox_orig_best_auc": 0.9986129753914988,
+ "controls_recorded": {
+  "crosstrain_obf_best_auc": 0.857,
+  "length_only_obf_auc": 0.658,
+  "length_matched_obf_auc": 0.954,
+  "length_only_obf_auc_in_band": 0.638,
+  "source": "computed from the 8B activations with generate/probe/controls_8b.py; the activations are not shipped"
+ }
+}

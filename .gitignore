@@ -1,7 +1,7 @@
-.venv/
 __pycache__/
 *.pyc
-*.pt
-*.npz
+.venv/
+# Terminal Wrench clone (git clone https://github.com/few-sh/terminal-wrench repo)
 repo/
+# intermediates of paid runs: rewrite texts, activations, SFT data, pod ids, logs
 runs/
