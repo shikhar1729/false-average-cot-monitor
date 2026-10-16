@@ -1,6 +1,6 @@
 """The held-out sonnet monitor's own verdict on the population the probe reads, three times over.
 
-Writes data/probe/sonnet_verdict_rescore.jsonl (Section 6 and Appendix H: the real monitor's verdict AUC,
+Writes data/probe/sonnet_verdict_rescore.jsonl (Section 6 and Appendix I: the real monitor's verdict AUC,
 0.62). Sonnet (dataset rubric, temperature 0) scores the 100 obfuscated hacks of the nested draw, as rendered
 in runs/probe/internals_inputs_obf.jsonl, and the 150 legit calibration solves, 3 repeats each. Resumable.
 Run: python -m generate.probe.sonnet_verdict_rescore [--repeats 3]. Needs OPENROUTER_API_KEY and the TW clone.

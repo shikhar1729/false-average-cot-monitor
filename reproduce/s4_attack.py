@@ -85,7 +85,7 @@ def main():
     check("four independent draws: highest catch", "6.0%", pct(*max(rates.values(), key=lambda kn: kn[0] / kn[1]), 1))
     note("the hindsight audit (2 of 1,044 rewritten steps) needs the rewrite texts, which are on request")
 
-    section("Table 3 (Appendix C): sensitivity of the subset definition")
+    section("Table 3 (Appendix D): sensitivity of the subset definition")
     nano_hacks, _ = monitor(NANO)
     obf = {r["sid"]: r["obf_baseline"] for r in rows}
     for name, definers, fpr, size, before, after, drop in [
@@ -111,7 +111,7 @@ def main():
     check("frontier gpt-5.4 action reader misses of the canonical subset", "81%",
           pct(sum(ao_gpt[s] < tau_gpt for s in canonical), len(canonical)))
 
-    section("Table 4 (Appendix C): a split with no monitor in its definition")
+    section("Table 4 (Appendix D): a split with no monitor in its definition")
     cats = {r["sample_id"]: r["observed_categories"] for r in jsonl(SONNET) if r["is_hack"]}
     groups = {"omission": [], "tampering": [], "all": sample}
     for r in sample:

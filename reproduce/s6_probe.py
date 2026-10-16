@@ -1,4 +1,4 @@
-"""Section 6, Table 6 and Appendix H: a linear probe on a surrogate monitor, and the behavioral
+"""Section 6, Table 6 and Appendix I: a linear probe on a surrogate monitor, and the behavioral
 controls that limit how its edge over the verdict can be read.
 
 The probe AUCs come from the saved pod outputs; recomputing them needs the activations, which
@@ -41,7 +41,7 @@ def main():
             for k in sorted({r["repeat"] for r in rescore})]
     check("sonnet verdict AUC (mean of three temperature-0 re-scores)", "0.62", num(np.mean(aucs)))
 
-    section("Section 6 and Appendix H: behavioral controls (held-out sonnet)")
+    section("Section 6 and Appendix I: behavioral controls (held-out sonnet)")
     tau = threshold(monitor(SONNET)[1])
     overt = jsonl("probe/overt_malice.jsonl")
     for key, mean_paper in [("malice_innocent", "0.96"), ("malice_honest", "0.99")]:

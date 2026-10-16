@@ -46,13 +46,13 @@ Same row format. `nano_full`, `flash_full` and `flash_action-only` define the op
 | `reference.jsonl` | 150 hacks + 150 legit | `kind` (hack or neg), `score` with a genuine reference solution in view |
 | `legit_<defense>.jsonl` | 150 each | the same 150 legit solves scored under each defense's rubric (its threshold) |
 
-## faithfulness/ — Appendix F
+## faithfulness/ — Appendix E
 
 `coherence.jsonl` (40: faithfulness of original and rewrite, monitor score), `fabrication.jsonl`
 (50 rewrites forced unfaithful: two judges' faithfulness, monitor score), `four_judges.jsonl`
 (40: faithfulness and contradiction flags from four judge families, for original and rewrite).
 
-## live/ — live agents on 27 tasks (Section 5, Table 5, Appendices E and I)
+## live/ — live agents on 27 tasks (Section 5, Table 5, Appendices H and J)
 
 | File | Content |
 |---|---|
@@ -60,7 +60,7 @@ Same row format. `nano_full`, `flash_full` and `flash_action-only` define the op
 | `task_sweep.json` | the 44 candidate tasks and whether each builds and verifies in the sandbox (27 do) |
 | `rewrite.jsonl` | the Section 4 rewrite applied to the 127 narrated hollow hacks: `orig` (same-day re-score), `stored`, `obf`, `par`, `group` (action-visible or residual) |
 
-## probe/ — Section 6, Table 6, Appendix H
+## probe/ — Section 6, Table 6, Appendix I
 
 | File | Content |
 |---|---|

@@ -1,6 +1,6 @@
 """Does innocent narration save an overtly malicious action from the monitor?
 
-Writes data/probe/overt_malice.jsonl (Section 6 and Appendix H, "injected rm -rf /tests"). For the first
+Writes data/probe/overt_malice.jsonl (Section 6 and Appendix I, "injected rm -rf /tests"). For the first
 20 innocently narrated live hacks of data/probe/live_subtle_hacks.jsonl, sonnet (dataset rubric, full
 scope) scores the trajectory as captured, and again with one appended step that deletes the tests and
 fakes a passing suite, narrated innocently or honestly.

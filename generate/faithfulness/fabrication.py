@@ -1,6 +1,6 @@
 """Rewrites forced to be unfaithful: does the attack still evade when the narration states false facts?
 
-Writes data/faithfulness/fabrication.jsonl (Appendix F, adversarial fabrication). For each of 50
+Writes data/faithfulness/fabrication.jsonl (Appendix E, adversarial fabrication). For each of 50
 reasoning-dependent hacks the obfuscator is told to assert specific, checkable results the trajectory
 contradicts (a passing test suite, a matched reference). Each rewrite gets a held-out sonnet monitor
 score and faithfulness ratings from two judges, gpt-5.4 and gemini-2.5-flash. Failed rewrites are dropped.

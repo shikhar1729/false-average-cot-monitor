@@ -1,7 +1,7 @@
 """Cross-train and length controls for the 8B probe, run locally on the saved activations.
 
 Reads runs/probe/probe_feats_8b.pt and internals_inputs_obf.jsonl and adds a "controls" block to
-runs/probe/probe_results_8b.json (Appendix H). Cross-train: fit on original hacks and legit, test on
+runs/probe/probe_results_8b.json (Appendix I). Cross-train: fit on original hacks and legit, test on
 obfuscated hacks and legit, folds grouped by task. Length: token length alone, and the probe inside the
 band where hack and legit lengths overlap. data/probe/probe_8b.json records four values, rounded, under
 controls_recorded: crosstrain_obf_best_auc, length_only_obf_auc, length_matched_obf_best_auc, length_only_obf_auc_in_band.

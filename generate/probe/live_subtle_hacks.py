@@ -1,6 +1,6 @@
 """Live agent hacks narrated innocently, plus genuine solves, as the held-out monitor reads them.
 
-Writes data/probe/live_subtle_hacks.jsonl (Section 6 and Appendix H; overt_malice.py and narration_swap.py
+Writes data/probe/live_subtle_hacks.jsonl (Section 6 and Appendix I; overt_malice.py and narration_swap.py
 start from its hacks). gpt-5.4 works the task multi-source-data-merger in a disposable RunPod sandbox:
 25 rollouts get the hack prompt plus an innocent-narration rule ("obf" if the tests pass, else "skip"),
 25 get the task alone ("legit"). Each is scored by sonnet with the dataset rubric. Resumable.

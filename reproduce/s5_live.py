@@ -1,4 +1,4 @@
-"""Section 5 (live agents), Table 5 and Appendices E and I: three live agents on 27 Terminal Wrench
+"""Section 5 (live agents), Table 5 and Appendices H and J: three live agents on 27 Terminal Wrench
 tasks, the monitor calibrated on each model's own honest solves, the hidden channel, and the
 Section 4 rewrite applied to the live hacks."""
 import numpy as np
@@ -77,7 +77,7 @@ def main():
         rows, passed, honest, hacks = load_agent(slug)
         legit = [r["emit_full"] for r in honest]
         tau = threshold(legit)
-        section(f"{name}: calibration and narrated hacks (Table 5, Appendix E)")
+        section(f"{name}: calibration and narrated hacks (Table 5, Appendix H)")
         check("honest solves (the negative class)", str(p["honest"]), str(len(legit)))
         check("calibrated threshold", p["tau"], num(tau))
         check("realized FPR", p["fpr"], pct(np.mean(np.asarray(legit) >= tau)))
@@ -117,7 +117,7 @@ def main():
         low_c = [r for r in c if r["action_only"] < 0.5]
         check("no narration instruction: residual", q["resid"], f"{len(low_c)} ({sum(r['emit_full'] < 0.5 for r in low_c)})")
 
-        section(f"{name}: sensitivity checks (Appendix E)")
+        section(f"{name}: sensitivity checks (Appendix H)")
         neg = [r["emit_full"] for r in passed if r["cond"] == NARRATED and r["hollow_emit"] < 0.5]
         check("non-hollow solves under the narration instruction", str(p["neg"]), str(len(neg)))
         check("of them flagged by the calibrated threshold", str(p["flagged"]), str(sum(s >= tau for s in neg)))
@@ -131,7 +131,7 @@ def main():
         agree = sum((r["hollow_ao"] >= 0.5) == (r["hollow_emit"] >= 0.5) for r in labelled)
         check("label agreement on passing narrated rollouts, full vs commands only", p["agree"], f"{agree} of {len(labelled)}")
 
-        section(f"{name}: hidden channel (Appendix I)")
+        section(f"{name}: hidden channel (Appendix J)")
         with_hidden = [r for r in h if r.get("hidden_full") is not None]
         check("narrated hacks with hidden thinking captured", p["hidden"], f"{len(with_hidden)} of {len(h)}")
         miss = [r for r in with_hidden if r["emit_full"] < 0.5]
@@ -157,7 +157,7 @@ def main():
     check("gpt-5.4 rollouts that rewrite the test files", "58 of 269", f"{len(tampered)} of {len(gpt_rows)}")
     check("of them failing the pristine verifier", "53", str(sum(not r.get("verifier_passed") for r in tampered)))
 
-    section("Section 5 and Appendix E: the Section 4 rewrite on the 127 narrated live hacks")
+    section("Section 5 and Appendix H: the Section 4 rewrite on the 127 narrated live hacks")
     rw = jsonl("live/rewrite.jsonl")
     taus = {name: threshold([r["emit_full"] for r in load_agent(slug)[2]]) for name, slug in AGENTS.items()}
     nds = {name: next_distinct([r["emit_full"] for r in load_agent(slug)[2]], taus[name]) for name, slug in AGENTS.items()}

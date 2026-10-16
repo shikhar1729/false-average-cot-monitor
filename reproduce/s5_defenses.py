@@ -1,4 +1,4 @@
-"""Section 5 (first half), Table 2 and Appendix F: trace-only defenses, the reference-solution
+"""Section 5 (first half), Table 2 and Appendix E: trace-only defenses, the reference-solution
 defense, and the faithfulness of the rewrite."""
 import numpy as np
 
@@ -51,7 +51,7 @@ def main():
     k, n = caught([r["score"] for r in ref if r["kind"] == "hack" and r["obf_status"] == "ok"], tau_ref)
     check("reference solution: after", "48% (72 of 150)", f"{pct(k, n)} ({k} of {n})")
 
-    section("Section 5 and Appendix F: the rewrite stays action-faithful")
+    section("Section 5 and Appendix E: the rewrite stays action-faithful")
     coh = jsonl("faithfulness/coherence.jsonl")
     check("faithfulness judge: rewrite", "0.96", num(np.mean([r["faith_obf"] for r in coh])))
     check("faithfulness judge: honest original", "0.97", num(np.mean([r["faith_orig"] for r in coh])))
@@ -66,7 +66,7 @@ def main():
     check("four judges: contradiction rate, original", "0 to 35%",
           span(min(mean(j, 'contra', 'orig') for j in JUDGES), max(mean(j, 'contra', 'orig') for j in JUDGES)))
 
-    section("Appendix F: rewrites forced to be unfaithful (adversarial fabrication), 50 hacks")
+    section("Appendix E: rewrites forced to be unfaithful (adversarial fabrication), 50 hacks")
     fab = jsonl("faithfulness/fabrication.jsonl")
     gpt = np.array([r["faith"]["gpt"] for r in fab])
     gem = np.array([r["faith"]["gemini"] for r in fab])

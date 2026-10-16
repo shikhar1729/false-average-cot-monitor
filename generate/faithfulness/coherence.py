@@ -1,6 +1,6 @@
 """Does the rewritten reasoning stay faithful to the unchanged actions?
 
-Writes data/faithfulness/coherence.jsonl (Section 5 and Appendix F, "the rewrite stays action-faithful").
+Writes data/faithfulness/coherence.jsonl (Section 5 and Appendix E, "the rewrite stays action-faithful").
 For each of 40 reasoning-dependent hacks it obfuscates the reasoning, scores the rewrite with the
 held-out sonnet monitor (full scope), and has an independent gpt-5.4 judge rate how faithfully the
 rewritten and the original reasoning describe the commands and outputs. Failed rewrites are dropped.

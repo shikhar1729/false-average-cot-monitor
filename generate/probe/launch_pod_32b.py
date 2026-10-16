@@ -1,7 +1,7 @@
 """Rent a GPU, run pod_32b.py on one part of the 32B battery, fetch its outputs, always delete the pod.
 
 Reads runs/probe/inputs_32b_<part>.jsonl and dirs_32b.pt (from prepare_inputs_32b.py) and writes
-runs/probe/out_32b_<part>.jsonl and feats_32b_<part>.pt for analyze_32b.py (Section 6, Appendix H). The
+runs/probe/out_32b_<part>.jsonl and feats_32b_<part>.pt for analyze_32b.py (Section 6, Appendix I). The
 two parts can run at once. --cost-cap sets the pod's run deadline from the GPU's hourly price; the pod
 also carries a --terminate-after backstop of at most 3 hours, set at creation.
 Run: python -m generate.probe.launch_pod_32b --part A (then --part B). Needs RUNPOD_API_KEY, HF_TOKEN and

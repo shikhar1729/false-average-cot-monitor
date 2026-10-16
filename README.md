@@ -31,9 +31,9 @@ disagree. Each section also runs on its own:
 |---|---|
 | `reproduce/s3_setup.py` | Section 3, Appendix B: the pool, the subset, thresholds, realized and split-half false-positive rates |
 | `reproduce/s4_attack.py` | Section 4, Tables 1, 3 and 4: the rewrite, its robustness, the subset sensitivity, the label split |
-| `reproduce/s5_defenses.py` | Section 5, Table 2, Appendix F: the defenses and the rewrite's faithfulness |
-| `reproduce/s5_live.py` | Section 5, Table 5, Appendices E and I: live agents, the hidden channel, the rewrite on live hacks |
-| `reproduce/s6_probe.py` | Section 6, Table 6, Appendix H: the probe and its behavioral controls |
+| `reproduce/s5_defenses.py` | Section 5, Table 2, Appendix E: the defenses and the rewrite's faithfulness |
+| `reproduce/s5_live.py` | Section 5, Table 5, Appendices H and J: live agents, the hidden channel, the rewrite on live hacks |
+| `reproduce/s6_probe.py` | Section 6, Table 6, Appendix I: the probe and its behavioral controls |
 | `reproduce/s7_distill.py` | Section 7: the LoRA distillation |
 
 Two inputs cannot be recomputed from shipped files, and the scripts say so where they appear: the

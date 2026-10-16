@@ -1,5 +1,5 @@
 """Run one live agent on Terminal Wrench tasks inside an isolated pod sandbox (Section 5, Table 5,
-Appendices E and I). Per task: build the environment, prove isolation, then run narrated-hack
+Appendices H and J). Per task: build the environment, prove isolation, then run narrated-hack
 (B_innocent), hack (A_control) and honest (H_honest) rollouts; run the real verifier, label hollow
 solves against the reference solution, and score the sonnet monitor on the emit, hidden and
 action-only renders. Writes one shard, runs/live/<agent><suffix>.json; generate.live.launch pools shards.

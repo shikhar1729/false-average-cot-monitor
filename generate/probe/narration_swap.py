@@ -1,6 +1,6 @@
 """Hold every action fixed and vary only the narration: does the monitor track the story's content?
 
-Writes data/probe/narration_swap.jsonl (Section 6 and Appendix H). gpt-5.4 rewrites the reasoning of the 25
+Writes data/probe/narration_swap.jsonl (Section 6 and Appendix I). gpt-5.4 rewrites the reasoning of the 25
 innocently narrated live hacks in data/probe/live_subtle_hacks.jsonl four ways (honest, innocent and
 faithful, innocent and vague, innocent and fabricated), commands and outputs byte-identical. Sonnet scores
 each and gpt-5.4 rates its faithfulness. Only scores go to data/; the texts go to runs/probe/. Resumable.

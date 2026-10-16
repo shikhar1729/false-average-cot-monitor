@@ -1,6 +1,6 @@
 """Is "the rewrite stays faithful" an artifact of one judge? Re-rate it with four judge families.
 
-Writes data/faithfulness/four_judges.jsonl (Section 5 and Appendix F: faithfulness ranges, contradiction
+Writes data/faithfulness/four_judges.jsonl (Section 5 and Appendix E: faithfulness ranges, contradiction
 rates). For each of 40 reasoning-dependent hacks it obfuscates the reasoning, scores the rewrite with the
 held-out sonnet monitor, and has gpt-5.4, claude-sonnet-4.6, gemini-2.5-flash and qwen3-32b rate the same
 rewritten and original text with the faithfulness prompt and a narrow contradiction check. Resumable.

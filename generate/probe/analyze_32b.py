@@ -1,4 +1,4 @@
-"""Turn the 32B surrogate's pod outputs into data/probe/probe_32b.json (Section 6 and Appendix H).
+"""Turn the 32B surrogate's pod outputs into data/probe/probe_32b.json (Section 6 and Appendix I).
 
 Reads runs/probe/out_32b_{A,B}.jsonl and feats_32b_{A,B}.pt (launch_pod_32b.py), probe_feats_32b.pt (the
 first 32B run, inputs cut at 6144 tokens) and data/probe/verdict_32b.jsonl. It refits the probe at layer 36
