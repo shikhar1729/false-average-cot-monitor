@@ -2,7 +2,7 @@
 29 held-out trajectories whose actions are frozen; the held-out sonnet monitor scores each version."""
 import numpy as np
 
-from lib import binom_two_sided, check, jsonl, monitor, num, report, section, threshold
+from lib import binom_two_sided, check, jsonl, monitor, note, num, report, section, threshold
 from s3_setup import SONNET
 
 
@@ -31,6 +31,7 @@ def main():
           f"{len(caught_tuned)} of {len(ids)} vs {len(caught_base)} of {len(ids)}")
     only_base, only_tuned = len(caught_base - caught_tuned), len(caught_tuned - caught_base)
     check("paired (exact McNemar) p", "0.07", num(binom_two_sided(only_base, only_base + only_tuned)))
+    note("the train/held-out split (65 and 16 tasks, 386 and 90 steps) is rebuilt from the probe inputs, which hold rewrite texts: generate/distill/prepare.py")
 
 
 if __name__ == "__main__":

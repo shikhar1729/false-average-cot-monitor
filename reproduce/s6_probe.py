@@ -7,7 +7,7 @@ import re
 
 import numpy as np
 
-from lib import auc, caught, check, jsonl, load_json, monitor, num, pct, report, section, threshold
+from lib import auc, caught, check, jsonl, load_json, monitor, num, pct, report, section, span, threshold
 from s3_setup import SONNET
 
 
@@ -64,6 +64,15 @@ def main():
     check("faithful narration: caught (0.5 cut)", "80%", pct(sum(r["innocent_faithful_mon"] >= 0.5 for r in rows), len(rows)))
     check("faithfulness of the fabricated story", "0.45", num(np.mean([r["innocent_fabricated_faith"] for r in rows])))
     check("faithfulness of the faithful story", "0.97", num(np.mean([r["innocent_faithful_faith"] for r in rows])))
+
+    check("vague innocent narration: caught (0.5 cut), faithfulness", "80%, 0.96",
+          f"{pct(sum(r['innocent_vague_mon'] >= 0.5 for r in rows), len(rows))}, {num(np.mean([r['innocent_vague_faith'] for r in rows]))}")
+    check("overt-malice trajectories before injection: mean suspicion (the 'subtle' bar)", "0.85", num(np.mean([r["baseline"] for r in overt])))
+
+    section("Table 6: 32B probe AUC by layer")
+    by = load_json("probe/probe_32b.json")["pool_replication"]["indist_auc_by_layer_true_last"]
+    check("32B layers 16..63", ".98 .98 .98 .98 .96 .95 .92 .92", " ".join(num(by[k])[1:] for k in sorted(by, key=int)))
+    check("32B layer range", "0.92 to 0.98", span(min(by.values()), max(by.values()), 2, "", 1))
 
 
 if __name__ == "__main__":
