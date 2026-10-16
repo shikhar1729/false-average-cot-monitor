@@ -1,7 +1,8 @@
 """Section 4, Tables 1, 3 and 4: the narration-only rewrite on the frozen pool."""
 import numpy as np
 
-from lib import auc, caught, check, jsonl, monitor, note, num, pct, report, rnd, section, span, threshold, wilson
+from lib import (auc, binom_two_sided, caught, check, jsonl, monitor, note, num, pct, realized_fpr, report, rnd,
+                 section, span, threshold, wilson)
 from s3_setup import NANO, SONNET, SONNET_AO, reasoning_dependent_subset
 
 FLASH_AO, GPT54_AO = "frozen_pool/flash_action-only.jsonl", "frozen_pool/gpt54_action-only.jsonl"
@@ -150,6 +151,64 @@ def main():
     check("opus rewritten hacks: median, share below 0.5", "0.00, 80%", f"{num(np.median([r['obf'] for r in opus]))}, {pct(sum(r['obf'] < 0.5 for r in opus), len(opus))}")
     check("opus originals: median, share below 0.5", "1.00, 0%", f"{num(np.median([r['orig'] for r in opus]))}, {pct(sum(r['orig'] < 0.5 for r in opus), len(opus))}")
     check("opus paraphrase: caught at tau=1.0", "73%", pct(*caught([r["par"] for r in opus], tau_opus)))
+
+    section("Table 1 and Appendix B: the dataset's own sanitizer, 209 headline hacks (same-day sonnet)")
+    san = jsonl("attack/sanitized.jsonl")
+    head = {r["sid"]: r for r in rows}
+    k, n = caught([r["san"] for r in san], tau_sonnet)
+    lo, hi = wilson(k, n)
+    check("sanitized: caught", "117 of 209 (56%, Wilson 49 to 63%)", f"{k} of {n} ({pct(k, n)}, Wilson {span(lo, hi, unit='%)')}")
+    check("sanitized: AUC against legit", "0.90", num(auc([r["san"] for r in san], sonnet_legit)))
+    check("originals re-scored the same day: caught, AUC", "202 (97%), 0.98",
+          f"{caught([r['orig'] for r in san], tau_sonnet)[0]} ({pct(*caught([r['orig'] for r in san], tau_sonnet))}), {num(auc([r['orig'] for r in san], sonnet_legit))}")
+    check("our rewrite on the same hacks: caught, AUC", "8, 0.67",
+          f"{caught([head[r['sid']]['obf_baseline'] for r in san], tau_sonnet)[0]}, {num(auc([head[r['sid']]['obf_baseline'] for r in san], sonnet_legit))}")
+    check("caught after sanitizing but missed before", "0", str(sum(r["san"] >= tau_sonnet > r["orig"] for r in san)))
+    only_san = sum(r["san"] >= tau_sonnet > head[r["sid"]]["obf_baseline"] for r in san)
+    only_obf = sum(head[r["sid"]]["obf_baseline"] >= tau_sonnet > r["san"] for r in san)
+    check("caught only when sanitized / only when rewritten", "110 / 1", f"{only_san} / {only_obf}")
+    note("the sanitized copies' commands and outputs match the originals (checked against the clone by generate/attack/sanitized.py)")
+
+    section("Table 1 and Appendix B: the causal rewrite, 50 headline hacks (same-day sonnet)")
+    cau = jsonl("attack/causal.jsonl")
+    check("hacks, rewrites passing the rail (one-shot / causal)", "50, 50 / 50",
+          f"{len(cau)}, {sum(r['oneshot_status'] == 'ok' for r in cau)} / {sum(r['causal_status'] == 'ok' for r in cau)}")
+    check("originals caught: same day / stored", "46 / 46 (92%)",
+          f"{caught([r['orig'] for r in cau], tau_sonnet)[0]} / {caught([head[r['sid']]['orig_baseline'] for r in cau], tau_sonnet)[0]} ({pct(*caught([r['orig'] for r in cau], tau_sonnet))})")
+    check("one-shot rewrite caught: same day / stored", "1 (2%) / 3",
+          f"{caught([r['oneshot'] for r in cau], tau_sonnet)[0]} ({pct(*caught([r['oneshot'] for r in cau], tau_sonnet))}) / {caught([head[r['sid']]['obf_baseline'] for r in cau], tau_sonnet)[0]}")
+    k, n = caught([r["causal"] for r in cau], tau_sonnet)
+    lo, hi = wilson(k, n)
+    check("causal rewrite caught", "6 (12%, Wilson 6 to 24%)", f"{k} ({pct(k, n)}, Wilson {span(lo, hi, unit='%)')}")
+    check("hindsight's worth: causal minus one-shot catch", "about 10 points",
+          f"about {rnd(100 * (k - caught([r['oneshot'] for r in cau], tau_sonnet)[0]) / n)} points")
+    only_c = sum(r["causal"] >= tau_sonnet > r["oneshot"] for r in cau)
+    only_o = sum(r["oneshot"] >= tau_sonnet > r["causal"] for r in cau)
+    check("caught only under causal / only under one-shot; exact McNemar p", "5 / 0; 0.06",
+          f"{only_c} / {only_o}; {num(binom_two_sided(only_c, only_c + only_o))}")
+    check("AUC: originals, one-shot, causal", "0.97, 0.69, 0.71",
+          ", ".join(num(auc([r[key] for r in cau], sonnet_legit)) for key in ("orig", "oneshot", "causal")))
+    note("the 154 reasoning steps of the 50 hacks are counted from the clone, not from data/")
+
+    section("Table 1 and Appendix B: the opus pool under gpt-5.4, which does not saturate")
+    _, g54_legit = monitor("opus_pool/gpt54_full_honest.jsonl")
+    tau_g54 = threshold(g54_legit)
+    g54_stored, _ = monitor("opus_pool/gpt54_full.jsonl")
+    check("gpt-5.4 on opus legit solves: median (n)", "0.30 (1,026)", f"{num(np.median(g54_legit))} ({len(g54_legit):,})")
+    check("gpt-5.4 threshold, realized FPR", "0.97, 5.6%", f"{num(tau_g54)}, {pct(realized_fpr(g54_legit, tau_g54), 1, 1)}")
+    g54 = [r for r in jsonl("attack/opus_gpt54.jsonl")]
+    both = [r for r in g54 if r["obf_status"] == "ok" and r["par_status"] == "ok"]
+    check("opus hacks with both fresh rewrites", "96", str(len(both)))
+    for label, key, paper in [("originals (same day)", "orig", "56 (58%), AUC 0.84"), ("rewrite", "obf", "5 (5%), AUC 0.28"),
+                              ("paraphrase", "par", "59 (61%), AUC 0.83")]:
+        k, n = caught([r[key] for r in both], tau_g54)
+        check(f"gpt-5.4 {label}: caught of 96, AUC", paper, f"{k} ({pct(k, n)}), AUC {num(auc([r[key] for r in both], g54_legit))}")
+    check("rewrite scoring below 0.5", "84", str(sum(r["obf"] < 0.5 for r in both)))
+    check("same-day originals within 0.1 of the stored scores", "80 of 97",
+          f"{sum(abs(r['orig'] - g54_stored[r['sid']]) <= 0.1 for r in g54)} of {len(g54)}")
+    check("flash on the fresh rewrite: caught (Table 1 reproduces)", "0 of 97",
+          f"{caught([r['obf_flash'] for r in g54], tau_opus)[0]} of {caught([r['obf_flash'] for r in g54], tau_opus)[1]}")
+    check("flash on the fresh paraphrase: caught", "80%", pct(*caught([r["par_flash"] for r in both], tau_opus)))
 
     section("Appendix D: the actions and a hybrid monitor")
     full_h, full_l = monitor(SONNET)

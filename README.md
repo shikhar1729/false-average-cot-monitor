@@ -34,7 +34,7 @@ disagree. Each section also runs on its own:
 | `reproduce/s5_defenses.py` | Section 5, Table 2, Appendix E: the defenses and the rewrite's faithfulness |
 | `reproduce/s5_live.py` | Section 5, Table 5, Appendices H and J: live agents, the hidden channel, the rewrite on live hacks |
 | `reproduce/s6_probe.py` | Section 6, Table 6, Appendix I: the probe and its behavioral controls |
-| `reproduce/s7_distill.py` | Section 7: the LoRA distillation |
+| `reproduce/s7_distill.py` | Section 7, Appendix K: the LoRA distillation |
 
 Two inputs cannot be recomputed from shipped files, and the scripts say so where they appear: the
 hindsight audit of Section 4 needs the rewrite texts, and four Qwen3-8B probe controls need the
@@ -62,6 +62,7 @@ OpenRouter client (`openrouter.py`).
 | `attack/headline`, `defenses/legit_skeptic` | `generate.attack.headline` | key, clone | $60 |
 | `attack/iterated` | `generate.attack.iterated` | key, clone | $8 |
 | `attack/opus_actor` | `generate.attack.opus_actor` | key, clone | $25 |
+| `attack/sanitized`, `causal`, `opus_gpt54` | `generate.attack.<name>` (pre-registered: `generate/attack/prereg_checks.md`) | key, clone | $7, $5, $15 |
 | `defenses/trace_only`, `legit_consistency`, `legit_oracle` | `generate.defenses.trace_only` | key, clone | $40 |
 | `defenses/intent_blind`, `legit_intent_blind` | `generate.defenses.intent_blind` | key, clone | $60 |
 | `defenses/obfuscation_aware`, `legit_obfuscation_aware` | `generate.defenses.obfuscation_aware` | key, clone | $25 |
@@ -73,6 +74,7 @@ OpenRouter client (`openrouter.py`).
 | `probe/live_subtle_hacks` | `generate.probe.live_subtle_hacks` | key, clone, pod | $21 |
 | `probe/overt_malice`, `narration_swap` | `generate.probe.<name>` | key | $1 and $7 |
 | `probe/probe_8b` | `generate.probe.prepare_inputs`, then `launch_pod_8b`, then `controls_8b` | key, clone, pod | $7 |
+| `probe/probe_8b_action_only` | `generate.probe.action_only prepare`, `launch_pod_8b --inputs runs/probe/internals_inputs_ao.jsonl --no-verbal --tag ao`, `action_only collect` | clone, pod | under $1 |
 | `probe/verdict_32b`, `probe_32b` | `generate.probe.verdict_32b`; `prepare_inputs_32b`, `launch_pod_32b --part A` and `B`, `analyze_32b` | key, clone, pods | $10 |
 | `probe/sonnet_verdict_rescore` | `generate.probe.sonnet_verdict_rescore` | key, clone | $15 |
 | `distill/lora` | `generate.distill.prepare`, `launch_pod`, then `lora` | key, pod | $5 |

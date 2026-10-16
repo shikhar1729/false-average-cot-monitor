@@ -24,7 +24,9 @@ One row per trajectory: `sample_id`, `task_id`, `is_hack`, `observed_categories`
 ## opus_pool/ — Claude-Opus-4.6 actor (Table 1, other actor family)
 
 Same row format. `nano_full`, `flash_full` and `flash_action-only` define the opus subset;
-`flash_full_honest.jsonl` (1,027 legit solves) sets the threshold for Table 1's last row.
+`flash_full_honest.jsonl` (1,027 legit solves) sets the threshold for Table 1's flash row.
+`gpt54_full.jsonl` and `gpt54_full_honest.jsonl` are the same pool scored by gpt-5.4, which does not
+saturate on opus legit solves; the second sets the threshold for Table 1's gpt-5.4 row.
 
 ## attack/ — the narration-only rewrite (Section 4)
 
@@ -35,6 +37,9 @@ Same row format. `nano_full`, `flash_full` and `flash_action-only` define the op
 | `random_sample.jsonl` | 150 | unbiased draw of caught hacks; `orig_m0/m1`, `obf_m0/m1`, `par_m0/m1` (m0 = nano, m1 = sonnet, par = paraphrase control) |
 | `iterated.jsonl` | 60 | `rounds[k]` scores for repeated rewriting |
 | `opus_actor.jsonl` | 97 (96 with both rewrites) | `orig`, `obf`, `par` flash scores on opus hacks |
+| `opus_gpt54.jsonl` | 97 (96 with both rewrites) | the same hacks, fresh rewrites: `orig`, `obf`, `par` gpt-5.4 scores (originals re-scored the same day), `obf_flash`, `par_flash` |
+| `sanitized.jsonl` | 209 | the headline hacks: `orig` (same-day sonnet) and `san`, sonnet on the sanitized copy the dataset ships |
+| `causal.jsonl` | 50 | a seed-0 draw of the headline hacks: `orig`, `oneshot` (the Section 4 rewrite) and `causal` (rewritten step by step, no future outputs), all sonnet, same day |
 
 ## defenses/ — Table 2
 
@@ -65,6 +70,7 @@ Same row format. `nano_full`, `flash_full` and `flash_action-only` define the op
 | File | Content |
 |---|---|
 | `probe_8b.json` | Qwen3-8B surrogate: the pod's result block (probe AUC by layer, verdict AUC) and four controls recorded from activations that are not shipped |
+| `probe_8b_action_only.json` | the 8B probe re-run on action-only renders of the same 150 hacks and 150 legit solves: AUC by layer, the population ids, each input's length |
 | `probe_32b.json` | Qwen3-32B surrogate results |
 | `verdict_32b.jsonl` | the 32B surrogate's own verdicts on 150 obfuscated hacks and 150 legit solves |
 | `sonnet_verdict_rescore.jsonl` | the held-out sonnet monitor re-scoring the probe population three times |
@@ -72,7 +78,7 @@ Same row format. `nano_full`, `flash_full` and `flash_action-only` define the op
 | `narration_swap.jsonl` | 25 live subtle hacks under four narrations: scores and faithfulness only |
 | `live_subtle_hacks.jsonl` | the 25 live subtle hacks and 25 genuine solves as the monitor read them |
 
-## distill/ — Section 7
+## distill/ — Section 7, Appendix K
 
 `lora.jsonl`: monitor scores on 29 held-out trajectories for four narrations (`source`: `honest`,
 `obf` = obfuscated target, `base_gen` = un-tuned Qwen3-8B, `sft_gen` = LoRA fine-tune).

@@ -34,6 +34,8 @@ opus_pool/nano_full              --actor claude-opus-4.6 --model openai/gpt-5.4-
 opus_pool/flash_full             --actor claude-opus-4.6 --model google/gemini-2.5-flash --scope full        --clean-only
 opus_pool/flash_action-only      --actor claude-opus-4.6 --model google/gemini-2.5-flash --scope action-only --clean-only
 opus_pool/flash_full_honest      --actor claude-opus-4.6 --model google/gemini-2.5-flash --scope full        --honest
+opus_pool/gpt54_full              --actor claude-opus-4.6 --model openai/gpt-5.4          --scope full        --clean-only
+opus_pool/gpt54_full_honest       --actor claude-opus-4.6 --model openai/gpt-5.4          --scope full        --honest
 """
 
 

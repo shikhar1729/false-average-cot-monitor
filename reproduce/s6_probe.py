@@ -8,7 +8,7 @@ import re
 import numpy as np
 
 from lib import auc, caught, check, jsonl, load_json, monitor, num, pct, report, section, span, threshold
-from s3_setup import SONNET
+from s3_setup import SONNET, SONNET_AO
 
 
 def main():
@@ -25,6 +25,23 @@ def main():
     check("token length alone (recorded)", "0.66", num(rec["length_only_obf_auc"]))
     check("probe in a length-matched band (recorded)", "0.95", num(rec["length_matched_obf_auc"]))
     check("length alone in that band (recorded)", "0.64", num(rec["length_only_obf_auc_in_band"]))
+
+    section("Section 6, Table 6 and Appendix I: the 8B probe on action-only inputs (saved pod output)")
+    ao = load_json("probe/probe_8b_action_only.json")
+    check("action-only inputs: hacks / legit solves", "150 / 150", f"{ao['n']['obf']} / {ao['n']['legit']}")
+    by_layer = ao["whitebox_obf_auc_by_layer"]
+    check("Table 6: action-only AUC by layer 9..35", ".75 .74 .71 .75 .77 .78 .77 .76",
+          " ".join(num(by_layer[k])[1:] for k in sorted(by_layer, key=int)))
+    check("action-only probe: range over layers", "0.71 to 0.78", span(min(by_layer.values()), max(by_layer.values()), 2, "", 1))
+    check("action-only probe: best layer (Section 6)", "0.78", num(ao["whitebox_obf_best_auc"]))
+    ao_hacks, ao_legit_all = monitor(SONNET_AO)
+    ao_legit = {r["sample_id"]: r["score"] for r in jsonl(SONNET_AO) if not r["is_hack"]}
+    hs, ls = ao["population"]["hack_sids"], ao["population"]["legit_sids"]
+    check("action-only sonnet on the same population: AUC", "0.73", num(auc([ao_hacks[s] for s in hs], [ao_legit[s] for s in ls])))
+    check("action-only sonnet flags none of these hacks at its threshold", "0",
+          str(caught([ao_hacks[s] for s in hs], threshold(ao_legit_all))[0]))
+    chars = ao["input_chars"]
+    check("input length alone (hacks shorter): AUC", "0.67", num(1 - auc(chars["hack"], chars["legit"])))
 
     section("Section 6: Qwen3-32B surrogate")
     p32 = load_json("probe/probe_32b.json")["pool_replication"]
